@@ -1,0 +1,11 @@
+language: go
+go:
+    - 1.12.x
+script:
+    - make deps
+    - make test
+    - make cleanup
+    - git --no-pager diff && [[ 0 -eq $(git status --porcelain | wc -l) ]]
+notifications:
+    email:
+        on_success: never
